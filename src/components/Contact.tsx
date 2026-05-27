@@ -104,7 +104,7 @@ export default function Contact() {
         </div>
 
         <motion.a
-          href="https://wa.me/55519998718506"
+          href="https://wa.me/5551998718506"
           target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, y: 10 }}
