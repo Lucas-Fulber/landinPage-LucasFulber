@@ -1,30 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award } from "lucide-react";
+import { Award, ExternalLink } from "lucide-react";
 
-type Cert = { name: string };
+type Cert = { name: string; url?: string };
 type Issuer = { name: string; certs: Cert[] };
 
 const issuers: Issuer[] = [
   {
     name: "Alura",
     certs: [
-      { name: "BI com Excel" },
-      { name: "ChatGPT: otimizando qualidade dos resultados" },
-      { name: "ChatGPT: dicas e técnicas" },
-      { name: "Comunicação Assertiva" },
-      { name: "Customer Success" },
-      { name: "Formação Excel" },
+      { name: "BI com Excel", url: "https://cursos.alura.com.br/user/lucasf-lima3010/course/bi-excel-criando-dashboard-sem-complicacao/certificate" },
+      { name: "Excel: Automatizando tarefas com macros", url: "https://cursos.alura.com.br/user/lucasf-lima3010/course/excel-automatizando-tarefas-macros/certificate" },
+      { name: "ChatGPT: otimizando qualidade dos resultados", url: "https://cursos.alura.com.br/user/lucasf-lima3010/course/chatgpt-otimizando-qualidade-resultados/certificate" },
+      { name: "ChatGPT com Excel: automatização de macros", url: "https://cursos.alura.com.br/user/lucasf-lima3010/course/chatgpt-excel-automacao-macros/certificate" },
+      { name: "ChatGPT: Desvendadando a IA e suas aplicações", url: "https://cursos.alura.com.br/user/lucasf-lima3010/course/chatgpt-desvendando-ia-conversas-aplicacoes/certificate" },
+      { name: "Comunicação Assertiva", url: "https://cursos.alura.com.br/user/lucasf-lima3010/course/comunicacao-assertiva-reduzindo-conflitos-e-frustracaoes/certificate" },
+      { name: "Customer Success", url: "https://cursos.alura.com.br/user/lucasf-lima3010/course/customer-success-cultura-centrada-cliente/certificate" },
+      { name: "Formação Excel", url: "https://cursos.alura.com.br/user/lucasf-lima3010/course/excel-domine-editor-planilhas/certificate" },
     ],
   },
   {
     name: "Fiber School",
     certs: [
-      { name: "Fibra Óptica do Zero" },
-      { name: "Dominando o Ping" },
-      { name: "Redes TCP/IP" },
-      { name: "Wi-Fi Premium Residencial" },
+      { name: "Fibra Óptica do Zero", url: "https://www.linkedin.com/in/lucasfulber/" },
+      { name: "Dominando o Ping", url: "https://www.linkedin.com/in/lucasfulber/details/" },
+      { name: "Redes TCP/IP", url: "https://www.linkedin.com/in/lucasfulber/" },
+      { name: "Wi-Fi Premium Residencial", url: "https://www.linkedin.com/in/lucasfulber/" },
     ],
   },
 ];
@@ -71,10 +73,21 @@ export default function Certifications() {
                       duration: 0.3,
                       delay: issuerIdx * 0.15 + certIdx * 0.05,
                     }}
-                    className="flex items-start gap-2.5 text-sm text-gray-400 bg-white/3 border border-white/8 rounded-lg px-3 py-2.5 hover:border-accent/20 hover:text-gray-300 transition-colors"
+                    className="flex items-center gap-2.5 text-sm text-gray-400 bg-white/3 border border-white/8 rounded-lg px-3 py-2.5 hover:border-accent/20 hover:text-gray-300 transition-colors"
                   >
-                    <span className="text-accent text-xs mt-0.5">◆</span>
-                    {cert.name}
+                    <span className="text-accent text-xs shrink-0">◆</span>
+                    <span className="flex-1">{cert.name}</span>
+                    {cert.url && (
+                      <a
+                        href={cert.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-500 hover:text-accent transition-colors shrink-0"
+                        aria-label={`Certificado: ${cert.name}`}
+                      >
+                        <ExternalLink size={13} />
+                      </a>
+                    )}
                   </motion.li>
                 ))}
               </ul>

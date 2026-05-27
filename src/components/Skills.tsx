@@ -14,7 +14,7 @@ const categories: Category[] = [
   },
   {
     name: "Backend",
-    skills: ["Python", "Django", "REST Framework", "SQL", "SQLite", "JWT"],
+    skills: ["Python", "Node.js", "Django", "REST Framework", "SQL", "SQLite", "JWT"],
   },
   {
     name: "Infra & Redes",
