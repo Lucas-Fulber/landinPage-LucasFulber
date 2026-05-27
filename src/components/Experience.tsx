@@ -15,7 +15,7 @@ const experiences: Experience[] = [
   {
     role: "Desenvolvedor Full Stack Jr.",
     company: "Celeiro Crédito Agro",
-    period: "Mai/2026 — presente",
+    period: "Mai/2026",
     current: true,
     bullets: [
       "Desenvolvimento de aplicações web com Next.js, React e TypeScript",

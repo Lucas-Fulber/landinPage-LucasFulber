@@ -26,7 +26,7 @@ const educations: Education[] = [
   {
     institution: "Geração Caldeira",
     course: "Análise de Dados e Inteligência Artificial",
-    period: "Participação no programa",
+    period: "2023",
     status: "participação",
   },
   {
@@ -76,14 +76,14 @@ export default function Education() {
                 <h3 className="text-sm font-semibold text-white truncate">{edu.institution}</h3>
                 <p className="text-sm text-gray-400 mt-0.5">{edu.course}</p>
                 <div className="flex items-center gap-2 mt-2 flex-wrap">
-                  {edu.status !== "cursando" && (
-                    <span className="text-xs text-gray-500">{edu.period}</span>
-                  )}
                   <span
                     className={`text-xs border rounded-full px-2 py-0.5 ${statusColor[edu.status]}`}
                   >
                     {edu.status}
                   </span>
+                  {edu.status !== "cursando" && (
+                    <span className="text-xs text-gray-500">{edu.period}</span>
+                  )}
                 </div>
               </div>
             </motion.div>
