@@ -28,15 +28,15 @@ const projects: Project[] = [
     description:
       "Landing page temática e totalmente responsiva sobre focas, com hero section em vídeo de fundo. Projeto focado em semântica HTML, responsividade avançada com media queries e experiência visual imersiva.",
     stack: ["HTML5", "CSS3", "Media Queries"],
-    github: "https://github.com/Lucas-Fulber/seal-world",
-    demo: "https://lucas-fulber.github.io/seal-world",
+    github: "https://github.com/Lucas-Fulber/site-focas",
+    demo: "https://lucas-fulber.github.io/site-focas/",
   },
   {
     name: "Sistema de Agendamento API",
     description:
       "Backend acadêmico para gerenciamento de agendamentos de serviços com dois perfis de usuário — cliente e prestador. Implementa autenticação JWT, permissões por perfil e endpoints REST completos.",
     stack: ["Python", "Django", "Django REST Framework", "SQLite", "JWT"],
-    github: "https://github.com/Lucas-Fulber/agendamento-api",
+    github: "https://github.com/Lucas-Fulber/sistema-agendamento-api",
   },
 ];
 

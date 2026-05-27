@@ -24,9 +24,9 @@ const educations: Education[] = [
     status: "cursando",
   },
   {
-    institution: "Geração Caldeira",
+    institution: "Instituto Caldeira",
     course: "Análise de Dados e Inteligência Artificial",
-    period: "2023",
+    period: "2025",
     status: "participação",
   },
   {
