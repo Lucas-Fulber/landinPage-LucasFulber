@@ -26,7 +26,7 @@ const issuers: Issuer[] = [
       { name: "Fibra Óptica do Zero", url: "https://www.linkedin.com/in/lucasfulber/" },
       { name: "Dominando o Ping", url: "https://www.linkedin.com/in/lucasfulber/details/" },
       { name: "Redes TCP/IP", url: "https://www.linkedin.com/in/lucasfulber/" },
-      { name: "Wi-Fi Premium Residencial", url: "https://www.linkedin.com/in/lucasfulber/" },
+      { name: "Wi-Fi Premium Residencial", url: "https://www.linkedin.com/in/lucasfulber/overlay/Certifications/197979932/treasury/?profileId=ACoAAC-h9DUBiqKMNsu52Zw9q7-EC7FduO_16CI" },
     ],
   },
 ];
