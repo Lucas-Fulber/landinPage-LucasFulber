@@ -54,7 +54,7 @@ export default function Hero() {
           {...fadeUp(0.5)}
           className="text-base sm:text-lg text-gray-400 mx-auto leading-relaxed sm:whitespace-nowrap"
         >
-          Transformando lógica em experiências — da infraestrutura ao produto final.
+          Transformando códigos complexos em soluções inteligentes.
         </motion.p>
 
         {/* CTAs */}
