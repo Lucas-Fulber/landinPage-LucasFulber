@@ -17,7 +17,7 @@ const issuers: Issuer[] = [
       { name: "ChatGPT: Desvendadando a IA e suas aplicações", url: "https://cursos.alura.com.br/user/lucasf-lima3010/course/chatgpt-desvendando-ia-conversas-aplicacoes/certificate" },
       { name: "Comunicação Assertiva", url: "https://cursos.alura.com.br/user/lucasf-lima3010/course/comunicacao-assertiva-reduzindo-conflitos-e-frustracaoes/certificate" },
       { name: "Customer Success", url: "https://cursos.alura.com.br/user/lucasf-lima3010/course/customer-success-cultura-centrada-cliente/certificate" },
-      { name: "Formação Excel", url: "https://cursos.alura.com.br/user/lucasf-lima3010/course/excel-domine-editor-planilhas/certificate" },
+      { name: "Formação Excel", url: "https://cursos.alura.com.br/degree/certificate/edba25d3-3be7-4057-b71f-cfca00a2cb42?lang=pt" },
     ],
   },
   {
