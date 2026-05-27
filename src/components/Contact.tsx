@@ -104,7 +104,9 @@ export default function Contact() {
         </div>
 
         <motion.a
-          href="mailto:lucasf.lima3010@gmail.com"
+          href="https://wa.me/55519998718506"
+          target="_blank"
+          rel="noopener noreferrer"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

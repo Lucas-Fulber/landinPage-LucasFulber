@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Settings } from "lucide-react";
 
 const GithubIcon = ({ size = 16, className = "" }: { size?: number; className?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -15,6 +15,11 @@ type Project = {
   stack: string[];
   github: string;
   demo?: string;
+};
+
+type ComingSoonProject = {
+  name: string;
+  stack: string[];
 };
 
 const projects: Project[] = [
@@ -32,6 +37,17 @@ const projects: Project[] = [
       "Backend acadêmico para gerenciamento de agendamentos de serviços com dois perfis de usuário — cliente e prestador. Implementa autenticação JWT, permissões por perfil e endpoints REST completos.",
     stack: ["Python", "Django", "Django REST Framework", "SQLite", "JWT"],
     github: "https://github.com/Lucas-Fulber/agendamento-api",
+  },
+];
+
+const comingSoonProjects: ComingSoonProject[] = [
+  {
+    name: "Em Breve",
+    stack: ["React", "Node.js"],
+  },
+  {
+    name: "Em Breve",
+    stack: ["Next.js", "PostgreSQL"],
   },
 ];
 
@@ -95,6 +111,30 @@ export default function Projects() {
                   <span
                     key={tech}
                     className="text-xs px-2 py-1 rounded-md bg-accent/8 text-accent border border-accent/15 font-medium"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+
+          {comingSoonProjects.map((project, idx) => (
+            <motion.div
+              key={`coming-soon-${idx}`}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, delay: (projects.length + idx) * 0.15, ease: "easeOut" }}
+              className="bg-white/[0.015] border border-white/5 border-dashed rounded-xl p-6 flex flex-col items-center justify-center text-center min-h-[180px]"
+            >
+              <Settings size={28} className="text-gray-600 mb-3 animate-spin" style={{ animationDuration: "4s" }} />
+              <p className="text-sm font-semibold text-gray-500">{project.name}</p>
+              <div className="flex flex-wrap gap-1.5 mt-3 justify-center">
+                {project.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-xs px-2 py-1 rounded-md bg-white/3 text-gray-600 border border-white/5 font-medium"
                   >
                     {tech}
                   </span>
