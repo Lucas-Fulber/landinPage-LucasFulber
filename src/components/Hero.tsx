@@ -52,7 +52,7 @@ export default function Hero() {
         {/* Tagline */}
         <motion.p
           {...fadeUp(0.5)}
-          className="text-base sm:text-lg text-gray-400 max-w-xl mx-auto leading-relaxed"
+          className="text-base sm:text-lg text-gray-400 mx-auto leading-relaxed sm:whitespace-nowrap"
         >
           Transformando lógica em experiências — da infraestrutura ao produto final.
         </motion.p>
