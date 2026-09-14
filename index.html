@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" class="dark">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,6 +20,23 @@
     <meta property="og:description" content="Portfólio profissional de Lucas Fulber Lima" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Lucas Fulber Lima" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lucas Fulber Lima — Desenvolvedor Full Stack" />
+    <meta name="twitter:description" content="Portfólio profissional de Lucas Fulber Lima" />
+    <script>
+      // Aplica o tema salvo antes da primeira pintura, para não piscar.
+      (function () {
+        try {
+          if (localStorage.getItem("tema") === "escuro") {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (e) {
+          /* localStorage bloqueado (janela privada): segue no tema claro */
+        }
+      })();
+    </script>
   </head>
   <body class="min-h-screen antialiased">
     <div id="root"></div>

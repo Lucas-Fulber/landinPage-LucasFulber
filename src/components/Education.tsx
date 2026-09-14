@@ -37,13 +37,13 @@ const educations: Education[] = [
 
 const statusColor = {
   cursando: "text-accent bg-accent/10 border-accent/20",
-  concluído: "text-gray-400 bg-white/5 border-white/10",
-  participação: "text-blue-400 bg-blue-400/10 border-blue-400/20",
+  concluído: "text-fg-muted bg-surface-raised border-edge-strong",
+  participação: "text-info bg-info/10 border-info/20",
 };
 
 export default function Education() {
   return (
-    <section id="formacao" className="py-24 px-4 bg-white/[0.02]">
+    <section id="formacao" className="py-24 px-4 bg-surface">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -51,7 +51,7 @@ export default function Education() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl font-bold text-white mb-2">Formação</h2>
+          <h2 className="text-3xl font-bold text-fg mb-2">Formação</h2>
           <div className="w-12 h-0.5 bg-accent mb-10" />
         </motion.div>
 
@@ -63,7 +63,7 @@ export default function Education() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
-              className="bg-white/3 border border-white/8 rounded-xl p-5 hover:border-accent/20 transition-colors flex gap-4"
+              className="bg-surface border border-edge rounded-xl p-5 hover:border-accent/20 transition-colors flex gap-4"
             >
               <div className="mt-0.5 shrink-0">
                 <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
@@ -71,8 +71,8 @@ export default function Education() {
                 </div>
               </div>
               <div className="min-w-0">
-                <h3 className="text-sm font-semibold text-white truncate">{edu.institution}</h3>
-                <p className="text-sm text-gray-400 mt-0.5">{edu.course}</p>
+                <h3 className="text-sm font-semibold text-fg truncate">{edu.institution}</h3>
+                <p className="text-sm text-fg-muted mt-0.5">{edu.course}</p>
                 <div className="flex items-center gap-2 mt-2 flex-wrap">
                   <span
                     className={`text-xs border rounded-full px-2 py-0.5 ${statusColor[edu.status]}`}
@@ -80,7 +80,7 @@ export default function Education() {
                     {edu.status}
                   </span>
                   {edu.status !== "cursando" && (
-                    <span className="text-xs text-gray-500">{edu.period}</span>
+                    <span className="text-xs text-fg-subtle">{edu.period}</span>
                   )}
                 </div>
               </div>

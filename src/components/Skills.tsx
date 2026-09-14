@@ -26,7 +26,7 @@ const categories: Category[] = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-4 bg-white/[0.02]">
+    <section id="skills" className="py-24 px-4 bg-surface">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -34,7 +34,7 @@ export default function Skills() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl font-bold text-white mb-2">Skills</h2>
+          <h2 className="text-3xl font-bold text-fg mb-2">Skills</h2>
           <div className="w-12 h-0.5 bg-accent mb-10" />
         </motion.div>
 
@@ -58,7 +58,7 @@ export default function Skills() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: catIdx * 0.1 + skillIdx * 0.04 }}
-                    className="px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-accent/40 hover:text-accent transition-colors"
+                    className="px-3 py-1.5 text-xs font-medium text-fg-soft bg-surface-raised border border-edge-strong rounded-full hover:border-accent/40 hover:text-accent transition-colors"
                   >
                     {skill}
                   </motion.span>

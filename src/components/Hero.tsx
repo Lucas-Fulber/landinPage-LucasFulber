@@ -25,7 +25,7 @@ export default function Hero() {
       <div className="max-w-3xl mx-auto text-center space-y-6">
         {/* Location badge */}
         <motion.div {...fadeUp(0.1)}>
-          <span className="inline-flex items-center gap-1.5 text-xs text-gray-400 bg-white/5 border border-white/10 rounded-full px-3 py-1">
+          <span className="inline-flex items-center gap-1.5 text-xs text-fg-muted bg-surface-raised border border-edge-strong rounded-full px-3 py-1">
             <MapPin size={11} className="text-accent" />
             Porto Alegre, RS — Brasil
           </span>
@@ -34,7 +34,7 @@ export default function Hero() {
         {/* Name */}
         <motion.h1
           {...fadeUp(0.2)}
-          className="text-4xl sm:text-6xl font-bold tracking-tight text-white leading-tight"
+          className="text-4xl sm:text-6xl font-bold tracking-tight text-fg leading-tight"
         >
           Lucas Fulber Lima
         </motion.h1>
@@ -50,7 +50,7 @@ export default function Hero() {
         {/* Tagline */}
         <motion.p
           {...fadeUp(0.5)}
-          className="text-base sm:text-lg text-gray-400 mx-auto leading-relaxed sm:whitespace-nowrap"
+          className="text-base sm:text-lg text-fg-muted mx-auto leading-relaxed sm:whitespace-nowrap"
         >
           Transformando códigos complexos em soluções inteligentes.
         </motion.p>
@@ -59,13 +59,13 @@ export default function Hero() {
         <motion.div {...fadeUp(0.65)} className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
           <button
             onClick={() => scrollTo("#projetos")}
-            className="px-6 py-3 rounded-full bg-accent text-black text-sm font-semibold hover:bg-accent/90 transition-all hover:scale-105 active:scale-95"
+            className="px-6 py-3 rounded-full bg-accent text-on-accent text-sm font-semibold hover:bg-accent/90 transition-all hover:scale-105 active:scale-95"
           >
             Ver Projetos
           </button>
           <button
             onClick={() => scrollTo("#contato")}
-            className="px-6 py-3 rounded-full border border-white/15 text-sm font-medium text-gray-300 hover:border-accent/50 hover:text-white transition-all"
+            className="px-6 py-3 rounded-full border border-edge-strong text-sm font-medium text-fg-soft hover:border-accent/50 hover:text-fg transition-all"
           >
             Entrar em Contato
           </button>
@@ -78,7 +78,7 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.5 }}
         onClick={() => scrollTo("#sobre")}
-        className="absolute bottom-8 text-gray-600 hover:text-accent transition-colors"
+        className="absolute bottom-8 text-fg-faint hover:text-accent transition-colors"
         aria-label="Rolar para baixo"
       >
         <motion.div

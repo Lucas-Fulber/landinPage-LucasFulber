@@ -51,7 +51,7 @@ const comingSoonProjects: ComingSoonProject[] = [
 
 export default function Projects() {
   return (
-    <section id="projetos" className="py-24 px-4 bg-white/[0.02]">
+    <section id="projetos" className="py-24 px-4 bg-surface">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -59,7 +59,7 @@ export default function Projects() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl font-bold text-white mb-2">Projetos</h2>
+          <h2 className="text-3xl font-bold text-fg mb-2">Projetos</h2>
           <div className="w-12 h-0.5 bg-accent mb-10" />
         </motion.div>
 
@@ -72,10 +72,10 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: idx * 0.15, ease: "easeOut" }}
               whileHover={{ scale: 1.015 }}
-              className="group bg-white/3 border border-white/8 rounded-xl p-6 flex flex-col hover:border-accent/30 transition-all"
+              className="group bg-surface border border-edge rounded-xl p-6 flex flex-col hover:border-accent/30 transition-all"
             >
               <div className="flex items-start justify-between mb-3">
-                <h3 className="text-base font-semibold text-white group-hover:text-accent transition-colors">
+                <h3 className="text-base font-semibold text-fg group-hover:text-accent transition-colors">
                   {project.name}
                 </h3>
                 <div className="flex gap-2 shrink-0 ml-3">
@@ -83,7 +83,7 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-500 hover:text-accent transition-colors"
+                    className="text-fg-subtle hover:text-accent transition-colors"
                     aria-label="GitHub"
                   >
                     <GithubIcon size={16} />
@@ -93,7 +93,7 @@ export default function Projects() {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-500 hover:text-accent transition-colors"
+                      className="text-fg-subtle hover:text-accent transition-colors"
                       aria-label="Demo"
                     >
                       <ExternalLink size={16} />
@@ -102,7 +102,7 @@ export default function Projects() {
                 </div>
               </div>
 
-              <p className="text-sm text-gray-400 leading-relaxed flex-1">{project.description}</p>
+              <p className="text-sm text-fg-muted leading-relaxed flex-1">{project.description}</p>
 
               <div className="flex flex-wrap gap-1.5 mt-4">
                 {project.stack.map((tech) => (
@@ -124,15 +124,15 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: (projects.length + idx) * 0.15, ease: "easeOut" }}
-              className="bg-white/[0.015] border border-white/5 border-dashed rounded-xl p-6 flex flex-col items-center justify-center text-center min-h-[180px]"
+              className="bg-surface border border-edge border-dashed rounded-xl p-6 flex flex-col items-center justify-center text-center min-h-[180px]"
             >
-              <Settings size={28} className="text-gray-600 mb-3 animate-spin" style={{ animationDuration: "4s" }} />
-              <p className="text-sm font-semibold text-gray-500">{project.name}</p>
+              <Settings size={28} className="text-fg-faint mb-3 animate-spin" style={{ animationDuration: "4s" }} />
+              <p className="text-sm font-semibold text-fg-subtle">{project.name}</p>
               <div className="flex flex-wrap gap-1.5 mt-3 justify-center">
                 {project.stack.map((tech) => (
                   <span
                     key={tech}
-                    className="text-xs px-2 py-1 rounded-md bg-white/3 text-gray-600 border border-white/5 font-medium"
+                    className="text-xs px-2 py-1 rounded-md bg-surface text-fg-faint border border-edge font-medium"
                   >
                     {tech}
                   </span>

@@ -57,9 +57,9 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl font-bold text-white mb-2">Contato</h2>
+          <h2 className="text-3xl font-bold text-fg mb-2">Contato</h2>
           <div className="w-12 h-0.5 bg-accent mx-auto mb-6" />
-          <p className="text-gray-400 text-base max-w-md mx-auto mb-12">
+          <p className="text-fg-muted text-base max-w-md mx-auto mb-12">
             Aberto a novas oportunidades, projetos freelance ou apenas uma boa conversa sobre tecnologia.
           </p>
         </motion.div>
@@ -72,14 +72,14 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: idx * 0.1, ease: "easeOut" }}
-                className="bg-white/3 border border-white/8 rounded-xl px-5 py-4 flex items-center gap-4 hover:border-accent/30 transition-colors group"
+                className="bg-surface border border-edge rounded-xl px-5 py-4 flex items-center gap-4 hover:border-accent/30 transition-colors group"
               >
                 <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0">
                   {link.renderIcon("text-accent")}
                 </div>
                 <div className="text-left min-w-0">
-                  <p className="text-xs text-gray-500 mb-0.5">{link.label}</p>
-                  <p className="text-sm text-gray-300 group-hover:text-accent transition-colors truncate">
+                  <p className="text-xs text-fg-subtle mb-0.5">{link.label}</p>
+                  <p className="text-sm text-fg-soft group-hover:text-accent transition-colors truncate">
                     {link.value}
                   </p>
                 </div>
@@ -109,7 +109,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-accent text-black font-semibold text-sm hover:bg-accent/90 transition-all hover:scale-105 active:scale-95"
+          className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-accent text-on-accent font-semibold text-sm hover:bg-accent/90 transition-all hover:scale-105 active:scale-95"
         >
           <Mail size={15} />
           Enviar mensagem
@@ -120,9 +120,9 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-16 text-xs text-gray-600"
+          className="mt-16 text-xs text-fg-faint"
         >
-          © {new Date().getFullYear()} Lucas Fulber Lima · Desenvolvido com Next.js & Tailwind CSS
+          © {new Date().getFullYear()} Lucas Fulber Lima · Desenvolvido com React, Vite & Tailwind CSS
         </motion.p>
       </div>
     </section>

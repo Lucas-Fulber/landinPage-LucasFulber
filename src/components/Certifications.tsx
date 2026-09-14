@@ -39,7 +39,7 @@ export default function Certifications() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl font-bold text-white mb-2">Certificações</h2>
+          <h2 className="text-3xl font-bold text-fg mb-2">Certificações</h2>
           <div className="w-12 h-0.5 bg-accent mb-10" />
         </motion.div>
 
@@ -71,7 +71,7 @@ export default function Certifications() {
                       duration: 0.3,
                       delay: issuerIdx * 0.15 + certIdx * 0.05,
                     }}
-                    className="flex items-center gap-2.5 text-sm text-gray-400 bg-white/3 border border-white/8 rounded-lg px-3 py-2.5 hover:border-accent/20 hover:text-gray-300 transition-colors"
+                    className="flex items-center gap-2.5 text-sm text-fg-muted bg-surface border border-edge rounded-lg px-3 py-2.5 hover:border-accent/20 hover:text-fg-soft transition-colors"
                   >
                     <span className="text-accent text-xs shrink-0">◆</span>
                     <span className="flex-1">{cert.name}</span>
@@ -80,7 +80,7 @@ export default function Certifications() {
                         href={cert.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-500 hover:text-accent transition-colors shrink-0"
+                        className="text-fg-subtle hover:text-accent transition-colors shrink-0"
                         aria-label={`Certificado: ${cert.name}`}
                       >
                         <ExternalLink size={13} />

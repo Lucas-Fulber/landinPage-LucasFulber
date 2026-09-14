@@ -40,3 +40,6 @@ yarn-error.log*
 
 # claude code
 .claude/
+
+# template AI-first (material de referência, não faz parte do projeto)
+ai-first-portfolio-template/

@@ -10,7 +10,7 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl font-bold text-white mb-2">
+          <h2 className="text-3xl font-bold text-fg mb-2">
             Sobre mim
           </h2>
           <div className="w-12 h-0.5 bg-accent mb-10" />
@@ -22,7 +22,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-            className="space-y-5 text-gray-400 leading-relaxed"
+            className="space-y-5 text-fg-muted leading-relaxed"
           >
             <p>
               Olá! Meu nome é Lucas, tenho 23 anos e sou{" "}
@@ -33,7 +33,7 @@ export default function About() {
             </p>
             <p>
               Por mais de dois anos na Resolutto IT, atuei como{" "}
-              <span className="text-white/80 font-medium">Analista de Redes e Suporte</span>,
+              <span className="text-fg/80 font-medium">Analista de Redes e Suporte</span>,
               desenvolvendo scripts em{" "}
               <span className="text-accent font-medium">Python</span> para automação, gerenciando
               equipamentos MikroTik, ONUs e OLTs, e monitorando ambientes com Zabbix.
@@ -61,10 +61,10 @@ export default function About() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="bg-white/3 border border-white/8 rounded-xl p-4"
+                className="bg-surface border border-edge rounded-xl p-4"
               >
-                <p className="text-xs text-gray-500 mb-1">{item.label}</p>
-                <p className="text-sm font-semibold text-white">{item.value}</p>
+                <p className="text-xs text-fg-subtle mb-1">{item.label}</p>
+                <p className="text-sm font-semibold text-fg">{item.value}</p>
               </div>
             ))}
           </motion.div>
