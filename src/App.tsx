@@ -8,7 +8,7 @@ import Certifications from "@/components/Certifications";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 
-export default function Home() {
+export default function App() {
   return (
     <>
       <Navbar />
