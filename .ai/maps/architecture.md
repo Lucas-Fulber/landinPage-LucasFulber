@@ -25,7 +25,8 @@ index.html                 shell + SEO + script de tema pré-paint
 | Shell, metadados, tema pré-paint | `index.html` |
 | Bootstrap React | `src/main.tsx` |
 | Composição das seções | `src/App.tsx` |
-| Tokens, temas, reset, scrollbar | `src/globals.css` |
+| Tokens de cor, escalas, temas, reset, scrollbar | `src/globals.css` (dois blocos `@theme`) |
+| Tokens de motion (duração, easing) | `src/motion.ts` — sem consumidor até AI-019 |
 | Estado do tema | `src/hooks/useTheme.ts` |
 | Seções | `src/components/*.tsx` |
 | Alias `@/` → `src/` | `tsconfig.json` + `vite.config.ts` (os dois) |

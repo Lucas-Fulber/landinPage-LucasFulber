@@ -24,7 +24,7 @@ Antes de varrer arquivos, use os mapas — eles existem para isso:
 | Onde está o conteúdo X? | Tabela de dados em `docs/ARCHITECTURE.md` |
 | Que token de cor eu uso? | Tabela de tokens em `docs/DESIGN_SYSTEM.md` |
 
-O projeto tem 15 arquivos em `src/`. Ler um componente inteiro é barato; varrer o repositório inteiro para encontrá-lo não é.
+O projeto tem 16 arquivos em `src/`. Ler um componente inteiro é barato; varrer o repositório inteiro para encontrá-lo não é.
 
 ## Custo
 

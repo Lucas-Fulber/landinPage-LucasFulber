@@ -49,6 +49,7 @@
 | Tokens de cor e tema | `docs/decisions/ADR-001-tokens-semanticos-de-cor.md` |
 | AI Repository OS | `docs/decisions/ADR-002-ai-repository-os.md` |
 | Single page sem router | `docs/decisions/ADR-003-single-page-sem-router.md` |
+| Direção da identidade visual | `docs/decisions/ADR-004-identidade-visual-hibrida.md` |
 
 ## Estado de máquina
 
@@ -71,7 +72,12 @@
 
 `.ai/context/AI-XXX.md` — contexto de uma task específica. Base em `.ai/context/TEMPLATE.md`.
 
-Existentes: `AI-004` (SEO e metadados).
+Existentes:
+
+| Pack | Cobre |
+| --- | --- |
+| `AI-004.md` | SEO e metadados |
+| `AI-012-auditoria-visual.md` | Auditoria visual do frontend: inventário medido, contraste, responsividade, direções e plano. Serve AI-003, AI-006, AI-008 e AI-013 a AI-019. |
 
 Crie um só quando ele evitar exploração repetida. Não crie para toda task.
 

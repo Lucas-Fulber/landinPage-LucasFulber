@@ -73,7 +73,7 @@ export default function Experience() {
                 className="sm:pl-12 relative"
               >
                 {/* Timeline dot */}
-                <div className="absolute left-0 top-1 w-8 h-8 rounded-full bg-background border border-edge-strong items-center justify-center hidden sm:flex">
+                <div className="absolute left-0 top-1 w-8 h-8 rounded-full bg-canvas border border-edge-strong items-center justify-center hidden sm:flex">
                   <Briefcase size={14} className={exp.current ? "text-accent" : "text-fg-subtle"} />
                 </div>
 

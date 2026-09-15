@@ -27,6 +27,52 @@
   --font-sans: var(--font-geist-sans);
 }
 
+/*
+  Escalas nomeadas por papel — ver ADR-004.
+  Os componentes ainda usam a escala padrão do Tailwind; a migração é
+  AI-016 (primitivos), AI-018 (ritmo) e AI-019 (motion). Enquanto as duas
+  escalas coexistem, prefira SEMPRE estes nomes em código novo.
+*/
+@theme {
+  /* Tipografia: seis papéis, do metadado ao display */
+  --text-meta: 0.75rem;
+  --text-meta--line-height: 1.4;
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.6;
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+  --text-lead: 1.25rem;
+  --text-lead--line-height: 1.5;
+  --text-section: 1.75rem;
+  --text-section--line-height: 1.2;
+  --text-section--letter-spacing: -0.01em;
+  --text-display: 2.75rem;
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.02em;
+
+  /* Monospace para stack, datas e identificadores.
+     Stack do sistema de propósito: Geist Mono seria dependência nova. */
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Espaçamento: quatro passos + o ritmo vertical por peso de seção */
+  --spacing-tight: 0.5rem;
+  --spacing-snug: 1rem;
+  --spacing-normal: 1.5rem;
+  --spacing-loose: 2.5rem;
+  --spacing-section-narrative: 5rem;
+  --spacing-section-data: 3.5rem;
+  --spacing-gutter: 1.5rem;
+
+  /* Duas faixas de largura: leitura e grade */
+  --container-reading: 42rem;
+  --container-grid: 68rem;
+
+  /* Um raio só. `rounded-full` continua, para círculo de verdade. */
+  --radius-edge: 0.25rem;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 /* Tema claro — padrão */
 :root {
   --canvas: #ffffff;

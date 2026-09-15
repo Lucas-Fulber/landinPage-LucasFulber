@@ -26,10 +26,10 @@ export default function About() {
           >
             <p>
               Olá! Meu nome é Lucas, tenho 23 anos e sou{" "}
-              <span className="text-accent font-medium">Desenvolvedor Full Stack Jr.</span>{" "}
-              na Celeiro Crédito Agro, onde atuo desde maio de 2026. Minha trajetória começou
+              <span className="text-accent font-medium">Desenvolvedor Full Stack.</span>{" "}
+              Hoje atuo como Freelancer na Celeiro Analise de risco como desenvolvedor freelancer, onde atuo desde o inicio de 2026. Minha trajetória começou
               em infraestrutura e redes, o que me deu uma base sólida para entender sistemas
-              de ponta a ponta.
+              de ponta a ponta, hoje estou me especializando em soluções web Full Stack.
             </p>
             <p>
               Por mais de dois anos na Resolutto IT, atuei como{" "}

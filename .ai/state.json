@@ -6,9 +6,9 @@
     "stack": ["react-19", "vite-8", "typescript", "tailwind-4"],
     "stack_verified": true
   },
-  "current_focus": "fila de correções pontuais pós-auditoria",
-  "active_task": "AI-002",
-  "last_verified_commit": "0f1c633",
+  "current_focus": "refatoração visual do frontend — foundation definida (AI-014); próxima etapa é migrar os componentes para ela",
+  "active_task": "AI-016",
+  "last_verified_commit": "7b3b9a3",
   "last_updated": "2026-09-15",
   "uncommitted_changes": true,
   "health": { "$ref": ".ai/health.json" },

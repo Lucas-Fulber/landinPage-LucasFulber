@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "note": "Índice compacto para localização e automação. Semântica completa em TASKS.md.",
-  "active_task": "AI-002",
-  "next_id": "AI-012",
+  "active_task": "AI-016",
+  "next_id": "AI-022",
   "tasks": [
     {
       "id": "AI-001",
@@ -12,27 +12,39 @@
       "type": "infrastructure",
       "depends_on": [],
       "blocks": [],
-      "areas": [".ai", ".claude", "docs", "scripts/ai", "package.json"]
+      "areas": [
+        ".ai",
+        ".claude",
+        "docs",
+        "scripts/ai",
+        "package.json"
+      ]
     },
     {
       "id": "AI-002",
       "title": "Corrigir classe de cor inexistente na timeline de Experiência",
-      "status": "ready",
+      "status": "done",
       "priority": "high",
       "type": "bug",
       "depends_on": [],
       "blocks": [],
-      "areas": ["src/components/Experience.tsx"]
+      "areas": [
+        "src/components/Experience.tsx"
+      ]
     },
     {
       "id": "AI-003",
       "title": "Contraste de superfície: cards invisíveis em seções elevadas",
-      "status": "todo",
+      "status": "ready",
       "priority": "medium",
       "type": "visual-bug",
       "depends_on": [],
       "blocks": [],
-      "areas": ["src/components/Education.tsx", "src/components/Projects.tsx"]
+      "areas": [
+        "src/components/Education.tsx",
+        "src/components/Projects.tsx"
+      ],
+      "context_pack": ".ai/context/AI-012-auditoria-visual.md"
     },
     {
       "id": "AI-004",
@@ -43,7 +55,10 @@
       "depends_on": [],
       "needs_author_input": "domínio de produção",
       "blocks": [],
-      "areas": ["index.html", "public"],
+      "areas": [
+        "index.html",
+        "public"
+      ],
       "context_pack": ".ai/context/AI-004.md"
     },
     {
@@ -54,7 +69,10 @@
       "type": "enhancement",
       "depends_on": [],
       "blocks": [],
-      "areas": ["index.html", "src/hooks/useTheme.ts"]
+      "areas": [
+        "index.html",
+        "src/hooks/useTheme.ts"
+      ]
     },
     {
       "id": "AI-006",
@@ -63,9 +81,11 @@
       "priority": "low",
       "type": "design",
       "depends_on": [],
-      "needs_author_input": "decisão visual",
       "blocks": [],
-      "areas": ["src/components/Hero.tsx"]
+      "areas": [
+        "src/components/Hero.tsx"
+      ],
+      "note": "alvo definido por ADR-004: glow e pill não têm lugar na direção escolhida"
     },
     {
       "id": "AI-007",
@@ -76,7 +96,11 @@
       "depends_on": [],
       "needs_author_input": "adotar testes ou não",
       "blocks": [],
-      "areas": ["package.json", ".claude/rules/validation.md", "docs/decisions"]
+      "areas": [
+        "package.json",
+        ".claude/rules/validation.md",
+        "docs/decisions"
+      ]
     },
     {
       "id": "AI-008",
@@ -87,7 +111,9 @@
       "depends_on": [],
       "needs_author_input": "quais projetos entram",
       "blocks": [],
-      "areas": ["src/components/Projects.tsx"]
+      "areas": [
+        "src/components/Projects.tsx"
+      ]
     },
     {
       "id": "AI-009",
@@ -97,7 +123,11 @@
       "type": "refactor",
       "depends_on": [],
       "blocks": [],
-      "areas": ["src/components/Projects.tsx", "src/components/Contact.tsx"]
+      "areas": [
+        "src/components/Projects.tsx",
+        "src/components/Contact.tsx"
+      ],
+      "note": "subconjunto de AI-016"
     },
     {
       "id": "AI-010",
@@ -107,7 +137,10 @@
       "type": "enhancement",
       "depends_on": [],
       "blocks": [],
-      "areas": ["src/components/Contact.tsx", "src/App.tsx"]
+      "areas": [
+        "src/components/Contact.tsx",
+        "src/App.tsx"
+      ]
     },
     {
       "id": "AI-011",
@@ -118,7 +151,151 @@
       "depends_on": [],
       "needs_author_input": "autorização para criar automação no GitHub",
       "blocks": [],
-      "areas": [".github/workflows"]
+      "areas": [
+        ".github/workflows"
+      ]
+    },
+    {
+      "id": "AI-012",
+      "title": "Auditoria visual e arquitetural do frontend",
+      "status": "done",
+      "priority": "high",
+      "type": "audit",
+      "depends_on": [],
+      "blocks": [],
+      "areas": [
+        "src"
+      ],
+      "context_pack": ".ai/context/AI-012-auditoria-visual.md"
+    },
+    {
+      "id": "AI-013",
+      "title": "Escolher a direção visual da refatoração",
+      "status": "done",
+      "priority": "high",
+      "type": "decision",
+      "depends_on": [],
+      "blocks": [],
+      "decision": "C — híbrido editorial + produto",
+      "adr": "docs/decisions/ADR-004-identidade-visual-hibrida.md",
+      "areas": [
+        "docs/decisions"
+      ]
+    },
+    {
+      "id": "AI-014",
+      "title": "Foundation: escala tipográfica, espaçamento, radius e motion como decisão",
+      "status": "done",
+      "priority": "high",
+      "type": "design-system",
+      "depends_on": [],
+      "blocks": [],
+      "areas": [
+        "src/globals.css",
+        "src/motion.ts",
+        "docs/DESIGN_SYSTEM.md"
+      ],
+      "context_pack": ".ai/context/AI-012-auditoria-visual.md",
+      "adr": "docs/decisions/ADR-004-identidade-visual-hibrida.md"
+    },
+    {
+      "id": "AI-015",
+      "title": "Corrigir contraste de texto reprovado em WCAG AA",
+      "status": "todo",
+      "priority": "medium",
+      "type": "accessibility",
+      "depends_on": [],
+      "needs_author_input": "novo valor de accent no tema claro (apenas essa parte)",
+      "blocks": [],
+      "areas": [
+        "src/globals.css"
+      ],
+      "context_pack": ".ai/context/AI-012-auditoria-visual.md"
+    },
+    {
+      "id": "AI-016",
+      "title": "Extrair primitivos e composições",
+      "status": "ready",
+      "priority": "medium",
+      "type": "refactor",
+      "depends_on": [],
+      "blocks": [],
+      "areas": [
+        "src/components/ui",
+        "src/components"
+      ],
+      "context_pack": ".ai/context/AI-012-auditoria-visual.md"
+    },
+    {
+      "id": "AI-017",
+      "title": "Desfazer o padrão \"tudo é card\" em Formação e Certificações",
+      "status": "todo",
+      "priority": "medium",
+      "type": "design",
+      "depends_on": [],
+      "blocks": [],
+      "areas": [
+        "src/components/Education.tsx",
+        "src/components/Certifications.tsx"
+      ],
+      "context_pack": ".ai/context/AI-012-auditoria-visual.md"
+    },
+    {
+      "id": "AI-018",
+      "title": "Ritmo vertical e alinhamento",
+      "status": "todo",
+      "priority": "low",
+      "type": "design",
+      "depends_on": [],
+      "blocks": [],
+      "areas": [
+        "src/components"
+      ],
+      "context_pack": ".ai/context/AI-012-auditoria-visual.md"
+    },
+    {
+      "id": "AI-019",
+      "title": "Reduzir motion a uma entrada por seção",
+      "status": "todo",
+      "priority": "low",
+      "type": "design",
+      "depends_on": [],
+      "blocks": [],
+      "areas": [
+        "src/components"
+      ],
+      "context_pack": ".ai/context/AI-012-auditoria-visual.md"
+    },
+    {
+      "id": "AI-020",
+      "title": "Resolver os dois tokens de cor quase mortos (accent-strong, info)",
+      "status": "todo",
+      "priority": "low",
+      "type": "design-system",
+      "depends_on": [],
+      "blocks": [],
+      "areas": [
+        "src/globals.css",
+        "src/components/Education.tsx"
+      ],
+      "context_pack": ".ai/context/AI-012-auditoria-visual.md"
+    },
+    {
+      "id": "AI-021",
+      "title": "Reconciliar os fatos de cargo e empresa atual",
+      "status": "todo",
+      "priority": "high",
+      "type": "content",
+      "depends_on": [],
+      "needs_author_input": "nome exato da empresa, natureza do vinculo e mes de inicio",
+      "blocks": [],
+      "areas": [
+        "src/components/About.tsx",
+        "src/components/Experience.tsx",
+        "src/components/Hero.tsx",
+        "index.html",
+        "docs/CONTENT_GUIDE.md"
+      ]
     }
   ]
 }

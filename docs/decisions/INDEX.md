@@ -9,3 +9,4 @@ Formato do arquivo: `ADR-XXX-titulo-curto.md`. Base: `ADR-TEMPLATE.md`.
 | [ADR-001](ADR-001-tokens-semanticos-de-cor.md) | Tokens semânticos de cor e tema claro/escuro por classe | Aceita |
 | [ADR-002](ADR-002-ai-repository-os.md) | Repositório como memória operacional (AI Repository OS) | Aceita |
 | [ADR-003](ADR-003-single-page-sem-router.md) | Single page com navegação por âncora, sem router | Aceita |
+| [ADR-004](ADR-004-identidade-visual-hibrida.md) | Identidade visual híbrida: editorial na narrativa, densidade nos dados | Aceita |

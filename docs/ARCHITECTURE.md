@@ -1,7 +1,7 @@
 # Arquitetura
 
 > Warm memory. Carregue quando a task envolver estrutura, composição ou fluxo de dados.
-> Verificado contra o commit `0f1c633` em 2026-09-15.
+> Verificado contra o commit `7b3b9a3` + as mudanças de AI-002 e AI-014, em 2026-09-15.
 
 ## Visão geral
 
@@ -20,6 +20,13 @@ O build produz HTML/CSS/JS estáticos em `dist/`. Ver [ADR-003](decisions/ADR-00
 | `index.html` | Shell HTML, metadados/SEO, `<div id="root">` e script inline que aplica o tema antes da primeira pintura. |
 | `src/main.tsx` | Monta o React em `#root` sob `StrictMode`; importa a fonte Geist e `globals.css`. |
 | `src/App.tsx` | Envolve tudo em `MotionConfig reducedMotion="user"` e ordena as seções. |
+
+Dois módulos de sistema, sem lógica de aplicação:
+
+| Arquivo | Responsabilidade |
+| --- | --- |
+| `src/globals.css` | Tokens de cor em `@theme inline` (apontam para `var()`) e escalas de tipografia, espaçamento, largura, raio e easing num segundo bloco `@theme` (valores literais). Ver `docs/DESIGN_SYSTEM.md`. |
+| `src/motion.ts` | Tokens de duração e easing para o framer-motion, que o CSS não alcança. Ainda sem consumidor — a migração dos componentes é AI-019. O easing espelha `--ease-out-soft` do CSS. |
 
 O script inline em `index.html` é deliberado: ele lê `localStorage.tema` e aplica a classe `dark` antes do React montar, evitando flash de tema. Isso cria um acoplamento intencional entre `index.html` e `src/hooks/useTheme.ts` — **os dois usam a chave `"tema"` e o valor `"escuro"`**. Alterar um exige alterar o outro.
 
@@ -73,7 +80,7 @@ Sem dependências circulares. Nenhum componente importa outro componente, com um
 ## Restrições
 
 - **Alias `@/`** aponta para `src/` e está declarado em dois lugares que precisam ficar em sincronia: `tsconfig.json` (`paths`) e `vite.config.ts` (`resolve.alias`).
-- **Tailwind CSS 4** sem arquivo de config: tokens e variantes vivem em `src/globals.css` via `@theme inline` e `@custom-variant`.
+- **Tailwind CSS 4** sem arquivo de config: tokens e variantes vivem em `src/globals.css` via `@theme`, `@theme inline` e `@custom-variant`. Desde AI-014 convivem duas escalas de tipografia e raio — a nomeada (nova) e a padrão do Tailwind (em uso pelos componentes); remover a padrão antes de migrar quebra a página **sem erro de build**.
 - **Deploy Vercel**, preset fixado em `vercel.json`, com rewrite de todas as rotas para `/index.html`. Push em `main` dispara deploy.
 - **Sem testes e sem test runner** instalado.
 - `tsc --noEmit` cobre `src` e `vite.config.ts` apenas (ver `include` no `tsconfig.json`) — scripts em `scripts/` não são type-checked.
