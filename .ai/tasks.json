@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "note": "Índice compacto para localização e automação. Semântica completa em TASKS.md.",
+  "active_task": "AI-002",
+  "next_id": "AI-012",
+  "tasks": [
+    {
+      "id": "AI-001",
+      "title": "Bootstrap do AI Repository OS",
+      "status": "done",
+      "priority": "high",
+      "type": "infrastructure",
+      "depends_on": [],
+      "blocks": [],
+      "areas": [".ai", ".claude", "docs", "scripts/ai", "package.json"]
+    },
+    {
+      "id": "AI-002",
+      "title": "Corrigir classe de cor inexistente na timeline de Experiência",
+      "status": "ready",
+      "priority": "high",
+      "type": "bug",
+      "depends_on": [],
+      "blocks": [],
+      "areas": ["src/components/Experience.tsx"]
+    },
+    {
+      "id": "AI-003",
+      "title": "Contraste de superfície: cards invisíveis em seções elevadas",
+      "status": "todo",
+      "priority": "medium",
+      "type": "visual-bug",
+      "depends_on": [],
+      "blocks": [],
+      "areas": ["src/components/Education.tsx", "src/components/Projects.tsx"]
+    },
+    {
+      "id": "AI-004",
+      "title": "Completar metadados de SEO e compartilhamento",
+      "status": "todo",
+      "priority": "medium",
+      "type": "enhancement",
+      "depends_on": [],
+      "needs_author_input": "domínio de produção",
+      "blocks": [],
+      "areas": ["index.html", "public"],
+      "context_pack": ".ai/context/AI-004.md"
+    },
+    {
+      "id": "AI-005",
+      "title": "Respeitar prefers-color-scheme na primeira visita",
+      "status": "todo",
+      "priority": "low",
+      "type": "enhancement",
+      "depends_on": [],
+      "blocks": [],
+      "areas": ["index.html", "src/hooks/useTheme.ts"]
+    },
+    {
+      "id": "AI-006",
+      "title": "Revisão editorial do Hero",
+      "status": "todo",
+      "priority": "low",
+      "type": "design",
+      "depends_on": [],
+      "needs_author_input": "decisão visual",
+      "blocks": [],
+      "areas": ["src/components/Hero.tsx"]
+    },
+    {
+      "id": "AI-007",
+      "title": "Decidir estratégia de testes",
+      "status": "todo",
+      "priority": "medium",
+      "type": "decision",
+      "depends_on": [],
+      "needs_author_input": "adotar testes ou não",
+      "blocks": [],
+      "areas": ["package.json", ".claude/rules/validation.md", "docs/decisions"]
+    },
+    {
+      "id": "AI-008",
+      "title": "Substituir placeholders \"Em Breve\" em Projetos",
+      "status": "todo",
+      "priority": "low",
+      "type": "content",
+      "depends_on": [],
+      "needs_author_input": "quais projetos entram",
+      "blocks": [],
+      "areas": ["src/components/Projects.tsx"]
+    },
+    {
+      "id": "AI-009",
+      "title": "Extrair GithubIcon duplicado",
+      "status": "todo",
+      "priority": "low",
+      "type": "refactor",
+      "depends_on": [],
+      "blocks": [],
+      "areas": ["src/components/Projects.tsx", "src/components/Contact.tsx"]
+    },
+    {
+      "id": "AI-010",
+      "title": "Semântica e coerência em Contact.tsx",
+      "status": "todo",
+      "priority": "low",
+      "type": "enhancement",
+      "depends_on": [],
+      "blocks": [],
+      "areas": ["src/components/Contact.tsx", "src/App.tsx"]
+    },
+    {
+      "id": "AI-011",
+      "title": "CI no GitHub Actions rodando a validação",
+      "status": "todo",
+      "priority": "low",
+      "type": "infrastructure",
+      "depends_on": [],
+      "needs_author_input": "autorização para criar automação no GitHub",
+      "blocks": [],
+      "areas": [".github/workflows"]
+    }
+  ]
+}

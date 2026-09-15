@@ -1,0 +1,65 @@
+version: 1
+
+# Política de memória e contexto. Procedimento em .claude/rules/.
+
+memory:
+  hot:
+    - CLAUDE.md
+    - PROJECT_STATE.md
+    - HANDOFF.md
+    - .ai/MEMORY_INDEX.md
+    # De TASKS.md, apenas a task ativa — não o arquivo inteiro.
+  warm:
+    - docs/ARCHITECTURE.md
+    - docs/DESIGN_SYSTEM.md
+    - docs/CONTENT_GUIDE.md
+    - docs/SEO.md
+    - docs/decisions/
+    - .ai/maps/
+    - .ai/context/
+  cold:
+    - .ai/sessions/
+    - .ai/history/
+    - .ai/archive/
+    - git
+
+context_budget:
+  strategy: load_on_demand
+  target_startup_tokens: 5000
+  rules:
+    - Nunca carregar histórico por padrão.
+    - Ler apenas a task ativa de TASKS.md.
+    - Carregar ADR somente quando a task puder contrariar uma decisão.
+    - Consultar .ai/maps/ antes de explorar o código amplamente.
+    - Não começar no Level 5 (exploração ampla).
+
+retention:
+  recent_sessions: 10
+  compact_when_session_count_exceeds: 10
+  done_tasks_hot_limit: 10
+  never_compact_if_referenced_by_open_task: true
+
+sources_of_truth:
+  implementation: source_code
+  dependencies_and_scripts: package.json
+  tooling_config: [tsconfig.json, vite.config.ts, eslint.config.mjs, vercel.json]
+  decisions: docs/decisions/
+  work_tracking: TASKS.md
+  current_state: PROJECT_STATE.md
+  immediate_continuation: HANDOFF.md
+  validation_results: .ai/health.json
+  tests: null # não existem neste projeto
+
+validation:
+  lint: npm run lint
+  typecheck: npm run typecheck
+  build: npm run build
+  test: null
+  aggregate: npm run ai:health
+
+safety:
+  commit_requires_explicit_request: true
+  push_requires_explicit_request: true
+  destructive_git_requires_explicit_approval: true
+  push_to_main_triggers_production_deploy: true
+  secrets_in_memory_files: forbidden

@@ -39,7 +39,11 @@ yarn-error.log*
 *.tsbuildinfo
 
 # claude code
-.claude/
+# .claude/rules/ é versionado de propósito: as regras do AI Repository OS
+# precisam chegar a todo clone (ver docs/decisions/ADR-002-ai-repository-os.md).
+# Só a configuração local da máquina fica fora.
+.claude/settings.local.json
 
-# template AI-first (material de referência, não faz parte do projeto)
-ai-first-portfolio-template/
+# saída gerada pelos scripts de apoio ao agente — contexto transitório, não memória
+.ai/runtime/*
+!.ai/runtime/.gitkeep

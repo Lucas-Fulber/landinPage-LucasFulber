@@ -6,7 +6,17 @@ import tseslint from "typescript-eslint";
 import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
-  globalIgnores(["dist"]),
+  globalIgnores(["dist", ".ai/runtime"]),
+  {
+    // Scripts de apoio ao agente: Node, não browser.
+    files: ["scripts/**/*.mjs"],
+    extends: [js.configs.recommended],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "module",
+      globals: globals.node,
+    },
+  },
   {
     files: ["**/*.{ts,tsx}"],
     extends: [
