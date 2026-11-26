@@ -1,17 +1,9 @@
 import { motion } from "framer-motion";
 import { MapPin, ArrowDown } from "lucide-react";
-
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay, ease: "easeOut" as const },
-});
+import Button from "@/components/ui/Button";
+import { duration, easeOutSoft, enterOffset } from "@/motion";
 
 export default function Hero() {
-  const scrollTo = (id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section
       id="hero"
@@ -22,72 +14,53 @@ export default function Hero() {
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-3xl mx-auto text-center space-y-6">
+      {/* Uma entrada para o bloco inteiro (AI-019) */}
+      <motion.div
+        initial={{ opacity: 0, y: enterOffset }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: duration.section, ease: easeOutSoft }}
+        className="max-w-3xl mx-auto text-center space-y-6"
+      >
         {/* Location badge */}
-        <motion.div {...fadeUp(0.1)}>
+        <div>
           <span className="inline-flex items-center gap-1.5 text-xs text-fg-muted bg-surface-raised border border-edge-strong rounded-full px-3 py-1">
             <MapPin size={11} className="text-accent" />
             Porto Alegre, RS — Brasil
           </span>
-        </motion.div>
+        </div>
 
         {/* Name */}
-        <motion.h1
-          {...fadeUp(0.2)}
-          className="text-4xl sm:text-6xl font-bold tracking-tight text-fg leading-tight"
-        >
+        <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-fg leading-tight">
           Lucas Fulber Lima
-        </motion.h1>
+        </h1>
 
         {/* Role */}
-        <motion.p
-          {...fadeUp(0.35)}
-          className="text-xl sm:text-2xl font-medium text-accent"
-        >
+        <p className="text-xl sm:text-2xl font-medium text-accent">
           Desenvolvedor Full Stack
-        </motion.p>
+        </p>
 
         {/* Tagline */}
-        <motion.p
-          {...fadeUp(0.5)}
-          className="text-base sm:text-lg text-fg-muted mx-auto leading-relaxed sm:whitespace-nowrap"
-        >
+        <p className="text-base sm:text-lg text-fg-muted mx-auto leading-relaxed sm:whitespace-nowrap">
           Transformando códigos complexos em soluções inteligentes.
-        </motion.p>
+        </p>
 
         {/* CTAs */}
-        <motion.div {...fadeUp(0.65)} className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-          <button
-            onClick={() => scrollTo("#projetos")}
-            className="px-6 py-3 rounded-full bg-accent text-on-accent text-sm font-semibold hover:bg-accent/90 transition-all hover:scale-105 active:scale-95"
-          >
-            Ver Projetos
-          </button>
-          <button
-            onClick={() => scrollTo("#contato")}
-            className="px-6 py-3 rounded-full border border-edge-strong text-sm font-medium text-fg-soft hover:border-accent/50 hover:text-fg transition-all"
-          >
+        <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+          <Button href="#projetos">Ver Projetos</Button>
+          <Button href="#contato" variant="secondary">
             Entrar em Contato
-          </button>
-        </motion.div>
-      </div>
+          </Button>
+        </div>
+      </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.5 }}
-        onClick={() => scrollTo("#sobre")}
-        className="absolute bottom-8 text-fg-faint hover:text-accent transition-colors"
-        aria-label="Rolar para baixo"
+      {/* Indicador de rolagem: estático, sem loop (AI-019) */}
+      <a
+        href="#sobre"
+        className="absolute bottom-8 text-fg-faint hover:text-accent transition-colors duration-150"
+        aria-label="Rolar para a seção Sobre"
       >
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-        >
-          <ArrowDown size={20} />
-        </motion.div>
-      </motion.button>
+        <ArrowDown size={20} />
+      </a>
     </section>
   );
 }

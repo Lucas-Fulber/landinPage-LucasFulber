@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import Section from "@/components/ui/Section";
 
 type Category = {
   name: string;
@@ -26,48 +26,26 @@ const categories: Category[] = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-4 bg-surface">
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          <h2 className="text-3xl font-bold text-fg mb-2">Skills</h2>
-          <div className="w-12 h-0.5 bg-accent mb-10" />
-        </motion.div>
-
-        <div className="grid sm:grid-cols-2 gap-8">
-          {categories.map((cat, catIdx) => (
-            <motion.div
-              key={cat.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: catIdx * 0.1, ease: "easeOut" }}
-            >
-              <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-4">
-                {cat.name}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {cat.skills.map((skill, skillIdx) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.85 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: catIdx * 0.1 + skillIdx * 0.04 }}
-                    className="px-3 py-1.5 text-xs font-medium text-fg-soft bg-surface-raised border border-edge-strong rounded-full hover:border-accent/40 hover:text-accent transition-colors"
-                  >
-                    {skill}
-                  </motion.span>
+    <Section id="skills" index="02" title="Skills" weight="data" raised>
+      <dl>
+        {categories.map((cat) => (
+          <div
+            key={cat.name}
+            className="grid sm:grid-cols-[12rem_1fr] gap-x-normal gap-y-tight py-snug border-b border-edge last:border-b-0"
+          >
+            <dt className="text-meta font-semibold uppercase tracking-widest text-fg-subtle sm:pt-0.5">
+              {cat.name}
+            </dt>
+            <dd>
+              <ul className="flex flex-wrap gap-x-normal gap-y-tight font-mono text-body-sm text-fg-soft">
+                {cat.skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
                 ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+              </ul>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </Section>
   );
 }

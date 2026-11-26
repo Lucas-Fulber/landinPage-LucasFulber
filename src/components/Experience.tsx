@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { Briefcase } from "lucide-react";
+import Section from "@/components/ui/Section";
+import Tag from "@/components/ui/Tag";
 
 type Experience = {
   role: string;
@@ -46,66 +46,40 @@ const experiences: Experience[] = [
 
 export default function Experience() {
   return (
-    <section id="experiencia" className="py-24 px-4">
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          <h2 className="text-3xl font-bold text-fg mb-2">Experiência</h2>
-          <div className="w-12 h-0.5 bg-accent mb-10" />
-        </motion.div>
+    <Section id="experiencia" index="03" title="Experiência" weight="narrative">
+      <ol className="relative">
+        {/* Linha da timeline: passa pelo centro dos marcadores */}
+        <div className="absolute left-[5px] top-2 bottom-2 w-px bg-edge-strong hidden sm:block" aria-hidden="true" />
 
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-surface-raised hidden sm:block" />
+        {experiences.map((exp, idx) => (
+          <li key={`${exp.company}-${idx}`} className="relative sm:pl-loose pb-loose last:pb-0">
+            <span
+              className={`absolute left-0 top-1.5 size-[11px] rounded-full border-2 hidden sm:block ${
+                exp.current ? "bg-accent border-accent" : "bg-canvas border-edge-strong"
+              }`}
+              aria-hidden="true"
+            />
 
-          <div className="space-y-10">
-            {experiences.map((exp, idx) => (
-              <motion.div
-                key={`${exp.company}-${idx}`}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: idx * 0.1, ease: "easeOut" }}
-                className="sm:pl-12 relative"
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-0 top-1 w-8 h-8 rounded-full bg-canvas border border-edge-strong items-center justify-center hidden sm:flex">
-                  <Briefcase size={14} className={exp.current ? "text-accent" : "text-fg-subtle"} />
-                </div>
+            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-snug gap-y-1">
+              <h3 className="text-body font-semibold text-fg">{exp.role}</h3>
+              <div className="flex items-center gap-tight shrink-0">
+                <span className="font-mono text-meta text-fg-subtle">{exp.period}</span>
+                {exp.current && <Tag tone="accent">Atual</Tag>}
+              </div>
+            </div>
+            <p className="text-body-sm text-fg-soft">{exp.company}</p>
 
-                <div className="bg-surface border border-edge rounded-xl p-5 hover:border-accent/20 transition-colors">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
-                    <div>
-                      <h3 className="text-base font-semibold text-fg">{exp.role}</h3>
-                      <p className="text-sm text-accent">{exp.company}</p>
-                    </div>
-                    <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-xs text-fg-subtle">{exp.period}</span>
-                      {exp.current && (
-                        <span className="text-xs text-accent bg-accent/10 border border-accent/20 rounded-full px-2 py-0.5">
-                          Atual
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <ul className="space-y-1.5">
-                    {exp.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex gap-2 text-sm text-fg-muted">
-                        <span className="text-accent mt-1.5 shrink-0">▸</span>
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+            <ul className="mt-tight space-y-1">
+              {exp.bullets.map((bullet, bIdx) => (
+                <li key={bIdx} className="flex gap-tight text-body-sm text-fg-muted">
+                  <span className="text-accent shrink-0" aria-hidden="true">▸</span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ol>
+    </Section>
   );
 }

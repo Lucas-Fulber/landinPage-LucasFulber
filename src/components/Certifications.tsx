@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { Award, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import Section from "@/components/ui/Section";
 
 type Cert = { name: string; url?: string };
 type Issuer = { name: string; certs: Cert[] };
@@ -29,70 +29,41 @@ const issuers: Issuer[] = [
   },
 ];
 
+/** Lista única, emissor como metadado: as duas colunas fecham com 6 itens cada. */
+const certs = issuers.flatMap((issuer) => issuer.certs.map((cert) => ({ ...cert, issuer: issuer.name })));
+
 export default function Certifications() {
   return (
-    <section id="certificacoes" className="py-24 px-4">
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          <h2 className="text-3xl font-bold text-fg mb-2">Certificações</h2>
-          <div className="w-12 h-0.5 bg-accent mb-10" />
-        </motion.div>
-
-        <div className="grid sm:grid-cols-2 gap-8">
-          {issuers.map((issuer, issuerIdx) => (
-            <motion.div
-              key={issuer.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: issuerIdx * 0.15, ease: "easeOut" }}
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
-                  <Award size={13} className="text-accent" />
-                </div>
-                <h3 className="text-sm font-bold text-accent uppercase tracking-widest">
-                  {issuer.name}
-                </h3>
-              </div>
-              <ul className="space-y-2">
-                {issuer.certs.map((cert, certIdx) => (
-                  <motion.li
-                    key={cert.name}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.3,
-                      delay: issuerIdx * 0.15 + certIdx * 0.05,
-                    }}
-                    className="flex items-center gap-2.5 text-sm text-fg-muted bg-surface border border-edge rounded-lg px-3 py-2.5 hover:border-accent/20 hover:text-fg-soft transition-colors"
-                  >
-                    <span className="text-accent text-xs shrink-0">◆</span>
-                    <span className="flex-1">{cert.name}</span>
-                    {cert.url && (
-                      <a
-                        href={cert.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-fg-subtle hover:text-accent transition-colors shrink-0"
-                        aria-label={`Certificado: ${cert.name}`}
-                      >
-                        <ExternalLink size={13} />
-                      </a>
-                    )}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <Section id="certificacoes" index="05" title="Certificações" weight="data">
+      <ul className="grid sm:grid-cols-2 gap-x-loose">
+        {certs.map((cert) => {
+          const content = (
+            <>
+              <span className="flex-1 min-w-0">{cert.name}</span>
+              <span className="font-mono text-meta text-fg-subtle shrink-0">{cert.issuer}</span>
+              {cert.url && <ArrowUpRight size={14} className="shrink-0 text-fg-subtle group-hover:text-accent" aria-hidden="true" />}
+            </>
+          );
+          const row = "flex items-baseline gap-snug py-tight text-body-sm text-fg-soft";
+          return (
+            <li key={cert.name} className="border-b border-edge">
+              {cert.url ? (
+                <a
+                  href={cert.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Certificado: ${cert.name}, ${cert.issuer} (abre em nova aba)`}
+                  className={`${row} group hover:text-fg transition-colors duration-150`}
+                >
+                  {content}
+                </a>
+              ) : (
+                <div className={row}>{content}</div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </Section>
   );
 }

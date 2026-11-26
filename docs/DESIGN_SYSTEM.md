@@ -1,7 +1,7 @@
 # Design System
 
 > Warm memory. Carregue quando a task envolver visual, layout, cor, tipografia ou motion.
-> Verificado contra o commit `7b3b9a3` + a correção de AI-002, em 2026-09-15.
+> Verificado em 2026-11-25, após a migração de AI-016/017/018/019 no working tree.
 >
 > Este arquivo descreve o sistema **como ele é**. O inventário medido do que está em uso, com os problemas encontrados, está em `.ai/context/AI-012-auditoria-visual.md` — não replicado aqui.
 >
@@ -33,7 +33,7 @@ Os tokens de cor vivem em `@theme inline` (apontam para `var()`); as escalas de 
 
 **Não existe token `background`.** `bg-background` é classe morta — Tailwind não a gera. Já causou um bug visual em produção, corrigido em AI-002; o fundo base é `bg-canvas`.
 
-**Atenção ao contraste:** `fg-faint`, `fg-subtle` e `accent` usado como texto no tema claro reprovam em WCAG AA nos tamanhos em que são aplicados hoje. Valores medidos e afetados em `.ai/context/AI-012-auditoria-visual.md`; correção em AI-015.
+**Atenção ao contraste:** `fg-subtle` e `fg-faint` foram recalibrados para ≥ 4,5:1 nos fundos em que aparecem (AI-015, valores na task). `accent` usado como texto no tema claro ainda reprova (3,30) — não use `text-accent` em texto pequeno novo; para ênfase em prosa use `<strong>` dentro de `Prose`.
 
 ### Tipografia
 
@@ -52,7 +52,7 @@ Fonte única: **Geist Variable**, via `@fontsource-variable/geist`, exposta como
 
 Monospace: `font-mono`, com stack do sistema — para stack técnica, datas e identificadores. Geist Mono foi descartada por ser dependência nova; se a coesão tipográfica exigir, vira task própria.
 
-**A escala padrão do Tailwind (`text-sm`, `text-3xl`, …) continua disponível e ainda é o que os componentes usam.** As duas coexistem de propósito até a migração (AI-016); remover a padrão antes disso quebraria a página em silêncio.
+**A escala padrão do Tailwind (`text-sm`, `text-3xl`, …) continua disponível.** As seções de conteúdo e os primitivos de `src/components/ui/` já usam os papéis acima; `Navbar.tsx` e `Hero.tsx` ainda usam a padrão. Remover a padrão do `@theme` antes de migrar esses dois quebraria a página em silêncio.
 
 ### Espaçamento e grid
 
@@ -62,15 +62,15 @@ Ritmo vertical por peso de seção, em vez de um valor único: `py-section-narra
 
 Duas faixas de largura: `max-w-reading` (672px) para bloco de leitura, `max-w-grid` (1088px) para grade densa.
 
-**Estado atual dos componentes:** container `max-w-5xl mx-auto` (hero usa `max-w-3xl`), ritmo `py-24` uniforme, gutter `px-4`, gaps em nove valores. A migração para a escala acima é AI-018.
+**Estado atual:** todas as seções de conteúdo passam por `Section` (`src/components/ui/Section.tsx`), que aplica ritmo por peso (`narrative`: Sobre, Experiência, Contato; `data`: Skills, Formação, Certificações, Projetos), largura e `px-gutter`. O Hero mantém `max-w-3xl`, `px-4` e `min-h-screen` (AI-006/AI-018).
 
-Seções alternam `bg-canvas` (implícito, via `body`) e `bg-surface` para separar blocos sem régua.
+Seções alternam `bg-canvas` (implícito, via `body`) e `bg-surface` (`raised`). Dentro da seção, a separação é por régua (`border-edge`) — o cabeçalho de seção abre com uma régua `border-edge-strong`, índice mono e título.
 
 ### Raio e borda
 
 **Escala decidida (AI-014):** um raio só — `rounded-edge` (4px) — mais `rounded-full` onde é círculo de verdade (o marcador da timeline). Ver ADR-004.
 
-**Estado atual:** `rounded-lg` (ícones), `rounded-xl` (cards), `rounded-md` (chips), `rounded-full` (pills e CTAs).
+**Estado atual:** `rounded-edge` em `Card`, `Tag` e `Button`; `rounded-full` no marcador da timeline. Restam `rounded-full` no pill de localização do Hero (AI-006) e na Navbar.
 
 Sem sombra em nenhum lugar — a separação vem de borda e superfície. **Mantenha assim:** não introduza `shadow-*`.
 
@@ -80,20 +80,9 @@ Sem sombra em nenhum lugar — a separação vem de borda e superfície. **Mante
 
 **Tokens decididos (AI-014):** `src/motion.ts` — três durações (`feedback` 0,15s · `enter` 0,3s · `section` 0,5s), um easing (`easeOutSoft`, espelhando `--ease-out-soft` no CSS) e `enterOffset` de 12px. Mudar o easing exige mudar os dois lugares.
 
-**Estado atual:** sete durações declaradas à mão e cerca de 57 elementos animando individualmente. A migração é AI-019.
+**Estado atual (AI-019):** uma entrada por seção, via `Reveal` (dentro de `Section`), e uma para o bloco do Hero — ambas com os tokens. Sem stagger, sem loop, sem `scale` em hover. A única entrada declarada à mão é a da `Navbar`.
 
-Padrão de entrada de seção, repetido em quase todos os componentes:
-
-```tsx
-initial={{ opacity: 0, y: 30 }}
-whileInView={{ opacity: 1, y: 0 }}
-viewport={{ once: true }}
-transition={{ duration: 0.6, ease: "easeOut" }}
-```
-
-Regras: `viewport={{ once: true }}` sempre (nada reanima no scroll de volta); durações entre `0.3s` e `0.6s`; stagger via `delay: idx * 0.1`.
-
-Há duas animações em loop: o `ArrowDown` do hero e o ícone `Settings` dos cards "Em Breve". São as únicas — não adicione mais.
+Para animar uma seção nova, use `Section` — não declare `motion` no componente. `viewport={{ once: true }}` sempre. **Não há animação em loop na página:** não adicione.
 
 ### Responsivo
 
@@ -127,11 +116,10 @@ Este é um portfólio pessoal, não uma landing page de SaaS. A identidade vem d
 O código atual **viola parcialmente** as próprias restrições acima. A auditoria AI-012 mediu a extensão disso; o inventário completo está em `.ai/context/AI-012-auditoria-visual.md`. Em resumo:
 
 - `Hero.tsx` tem um glow decorativo (`bg-accent/10 rounded-full blur-3xl`) e um pill de localização — exatamente os padrões "blob decorativo" e "pill". Ver task AI-006.
-- Cards com `bg-surface` dentro de seções com `bg-surface` (`Education`, `Projects`) ficam sem contraste de superfície. Ver task AI-003.
-- **"Excesso de cards" deixou de ser risco e passou a ser o estado:** mais de 30 superfícies com borda arredondada, sendo que Formação e Certificações são listas de texto curto dentro de caixas. Ver AI-017.
-- **As oito seções têm a mesma composição** (título + divisor de 48 px + grade de cards), o que contradiz "composição editorial" como fonte de identidade. Ver AI-013.
-- **Motion decorativo:** cerca de 57 elementos animam individualmente na entrada, incluindo stagger por pill. Contradiz "animação intencional". Ver AI-019.
+- `accent` como texto no tema claro (cargo no Hero, `Tag tone="accent"`) ainda reprova AA — aguarda o novo valor de AI-015.
 
-A direção que resolve essas quatro está decidida em **ADR-004**; a execução é AI-014, AI-016, AI-017, AI-018 e AI-019.
+Resolvidas em 2026-11-25: superfície dos cards (AI-003), excesso de cards (AI-017: card só em Projetos), composição repetida (régua + índice, densidade por seção), motion decorativo (AI-019).
+
+A direção está em **ADR-004**. As duas pendências acima dependem de decisão do autor.
 
 Ao mexer nessas áreas, trate isto como direção acordada, não como preferência nova.

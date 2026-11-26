@@ -35,7 +35,7 @@
     {
       "id": "AI-003",
       "title": "Contraste de superfície: cards invisíveis em seções elevadas",
-      "status": "ready",
+      "status": "done",
       "priority": "medium",
       "type": "visual-bug",
       "depends_on": [],
@@ -118,7 +118,7 @@
     {
       "id": "AI-009",
       "title": "Extrair GithubIcon duplicado",
-      "status": "todo",
+      "status": "done",
       "priority": "low",
       "type": "refactor",
       "depends_on": [],
@@ -132,7 +132,7 @@
     {
       "id": "AI-010",
       "title": "Semântica e coerência em Contact.tsx",
-      "status": "todo",
+      "status": "done",
       "priority": "low",
       "type": "enhancement",
       "depends_on": [],
@@ -201,7 +201,7 @@
     {
       "id": "AI-015",
       "title": "Corrigir contraste de texto reprovado em WCAG AA",
-      "status": "todo",
+      "status": "partial",
       "priority": "medium",
       "type": "accessibility",
       "depends_on": [],
@@ -215,7 +215,7 @@
     {
       "id": "AI-016",
       "title": "Extrair primitivos e composições",
-      "status": "ready",
+      "status": "partial",
       "priority": "medium",
       "type": "refactor",
       "depends_on": [],
@@ -229,7 +229,7 @@
     {
       "id": "AI-017",
       "title": "Desfazer o padrão \"tudo é card\" em Formação e Certificações",
-      "status": "todo",
+      "status": "done",
       "priority": "medium",
       "type": "design",
       "depends_on": [],
@@ -243,7 +243,7 @@
     {
       "id": "AI-018",
       "title": "Ritmo vertical e alinhamento",
-      "status": "todo",
+      "status": "partial",
       "priority": "low",
       "type": "design",
       "depends_on": [],
@@ -256,7 +256,7 @@
     {
       "id": "AI-019",
       "title": "Reduzir motion a uma entrada por seção",
-      "status": "todo",
+      "status": "done",
       "priority": "low",
       "type": "design",
       "depends_on": [],
@@ -283,7 +283,7 @@
     {
       "id": "AI-021",
       "title": "Reconciliar os fatos de cargo e empresa atual",
-      "status": "todo",
+      "status": "done",
       "priority": "high",
       "type": "content",
       "depends_on": [],

@@ -2,28 +2,26 @@
 
 > Hot memory. Descreve o projeto **como ele é agora**. Não é histórico — histórico vai para `.ai/history/`.
 
-**Última verificação:** 2026-09-15
-**Verificado contra o commit:** `7b3b9a3` + a correção de AI-002 no working tree
+**Última verificação:** 2026-11-25
+**Verificado contra o commit:** `e5207c9` + a migração visual no working tree (não commitada)
 
 ## Foco atual
 
-**Refatoração visual do frontend**, com a direção já decidida. A auditoria está concluída (AI-012, relatório em `.ai/context/AI-012-auditoria-visual.md`) e a identidade escolhida é a **híbrida — editorial na narrativa, densidade nos dados** (AI-013 → **ADR-004**).
+**Refatoração visual do frontend — quase concluída.** A direção híbrida da **ADR-004** está aplicada às sete seções de conteúdo, via primitivos em `src/components/ui/` (AI-016). Formação e Certificações deixaram de ser cards (AI-017), o motion é uma entrada por seção (AI-019) e o ritmo vertical varia por peso de seção (AI-018).
 
-A foundation já está definida (AI-014): escalas nomeadas de tipografia, espaçamento, largura, raio e motion em `src/globals.css` e `src/motion.ts`, documentadas em `docs/DESIGN_SYSTEM.md`. Nenhum componente as usa ainda.
+O que resta depende do autor: o Hero (AI-006, que arrasta o fim de AI-016 e AI-018) e o novo `accent` do tema claro (AI-015).
 
-Próximo passo de execução: **AI-016** (`READY`) — extrair primitivos consumindo a nova escala. Em paralelo e independentes: AI-017, AI-018, AI-019, **AI-003** e a parte de cinzas de **AI-015**.
+**Regra estrutural, vinda da ADR-004:** card não é padrão de layout — só em Projetos. Seção nova entra por `<Section>`.
 
-**Regra estrutural nova, vinda da ADR-004:** card não é mais o padrão de layout — é exceção, válida só em Projetos.
-
-**Armadilha ativa:** as duas escalas coexistem. A padrão do Tailwind (`text-sm`, `rounded-xl`) é o que os componentes usam; removê-la do `@theme` antes de migrar quebra a página **sem erro de build**. É o último passo de AI-016.
+**Armadilha ativa:** `Navbar` e `Hero` ainda usam a escala padrão do Tailwind. Removê-la do `@theme` antes de migrá-los quebra a página **sem erro de build**.
 
 ## Saúde
 
 Resultados em `.ai/health.json` — fonte única, não replicada aqui. Rode `npm run ai:health` para atualizar.
 
-Resumo em 2026-09-15: lint, typecheck e build passando. **Não há testes** (task AI-007).
+Resumo em 2026-11-25: lint, typecheck e build passando. **Não há testes** (task AI-007).
 
-Validação verificada no navegador nesta sessão: sem overflow horizontal em 1440/1024/768/390 px, nos dois temas. Esse estado não deve regredir.
+Validação visual nesta sessão: sem overflow horizontal em 1440/1024/768/390 px, nos dois temas. Esse estado não deve regredir.
 
 ## Arquitetura em uma frase
 
@@ -33,11 +31,11 @@ Single-page estática em React 19 + Vite 8 + TypeScript + Tailwind 4, oito seç�
 
 | Área | Situação |
 | --- | --- |
-| `src/components/` | Funcional e auditado. Sem primitivos de UI: cabeçalho de seção repetido 7×, card com 5 paddings, etiqueta com 6 implementações. Refatoração planejada em AI-016. |
-| `src/globals.css` + tema | Sistema de tokens correto (ADR-001), agora com as escalas de tipografia, espaçamento, largura, raio e easing definidas (AI-014). Valores com problema: `fg-faint`, `fg-subtle` e `accent` no claro reprovam contraste AA (AI-015); escala de superfície curta demais (AI-003). |
-| `src/motion.ts` | Novo. Tokens de duração e easing para o framer-motion. Sem consumidor até AI-019. |
+| `src/components/ui/` | Novo. Primitivos `Section`, `Container`, `SectionHeader`, `Reveal`, `Prose`, `Tag`, `Button`, `Card`, `BrandIcon`. Mapa em `.ai/maps/components.md`. |
+| `src/components/` | Sete seções migradas. `Hero` e `Navbar` ainda na escala antiga (AI-006 / AI-016). Novo `Footer.tsx`. |
+| `src/globals.css` + tema | `fg-subtle` e `fg-faint` recalibrados para AA. `accent` no claro ainda reprova como texto (AI-015). |
+| `src/motion.ts` | Consumido por `Reveal` e pelo Hero. |
 | `index.html` | Metadados incompletos (AI-004). |
-| `.ai/`, `.claude/`, `docs/`, `scripts/ai/` | Em uso real desde a segunda sessão. O ciclo start/finish se sustentou. |
 | Testes | Inexistentes. Decisão pendente (AI-007). |
 | CI | Inexistente. Aguarda autorização (AI-011). |
 
@@ -53,14 +51,14 @@ Single-page estática em React 19 + Vite 8 + TypeScript + Tailwind 4, oito seç�
 
 ## Problemas conhecidos que afetam o trabalho
 
-1. Contraste de texto reprovado em WCAG AA: `fg-faint` (2.56 claro / 2.62 escuro), `fg-subtle` (4.48 / 3.90) e `accent` como texto no claro (3.30). Medido no navegador (AI-015).
-2. Cards sem contraste de superfície em `Education` e `Projects` — diagnosticada, com correção recomendada (AI-003).
-3. A página tem oito seções com a mesma composição e mais de 30 cards; é a causa raiz da aparência genérica. Direção de correção decidida em ADR-004; execução em AI-014 a AI-019.
-4. `twitter:card` declarado como `summary_large_image` sem `og:image` — card de compartilhamento vazio (AI-004).
-
-O bug `bg-background` de `Experience.tsx:76` está **resolvido** (AI-002).
+1. `accent` como texto no tema claro: 3,30:1 (cargo do Hero, `Tag tone="accent"`). Aguarda decisão do novo valor (AI-015).
+2. Hero com glow e pill decorativos, contra a ADR-004 (AI-006).
+3. Dois cards "Em Breve" sem projeto (AI-008).
+4. `twitter:card` declarado como `summary_large_image` sem `og:image` (AI-004).
 
 ## Marcos recentes
+
+- **2026-11-25** — Direção da ADR-004 aplicada às seções de conteúdo (AI-016 parcial, AI-017, AI-018 parcial, AI-019); fatos de cargo reconciliados (AI-021); cinzas em AA (AI-015 parcial).
 
 - **2026-09-15** — Foundation do design system definida e verificada (AI-014).
 - **2026-09-15** — Direção da identidade visual escolhida: híbrida (ADR-004).

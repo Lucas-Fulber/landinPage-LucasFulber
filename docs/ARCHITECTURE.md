@@ -36,7 +36,7 @@ Não há. A navegação é por âncora e scroll suave dentro de uma única pági
 
 ## Composição de UI
 
-Uma seção por componente, todas irmãs diretas de `<main>`. Não existe hierarquia de componentes aninhados nem biblioteca de componentes compartilhados. Ver `.ai/maps/components.md`.
+Uma seção por componente, todas irmãs diretas de `<main>`, seguidas de `Footer`. As seções de conteúdo compõem primitivos de `src/components/ui/` (`Section`, `Prose`, `Tag`, `Button`, `Card`, `BrandIcon`). Ver `.ai/maps/components.md`.
 
 Consequência prática: cada seção repete seu próprio bloco de animação de entrada e seus próprios wrappers de layout (`max-w-5xl mx-auto`, `py-24 px-4`). Não há abstração. Isso é aceitável na escala atual e é um ponto de atenção se novas seções forem adicionadas.
 
@@ -75,7 +75,7 @@ App → components → hooks
 components → @/… (alias para src/)
 ```
 
-Sem dependências circulares. Nenhum componente importa outro componente, com uma exceção: `Navbar` importa `ThemeToggle`.
+Sem dependências circulares. Seções importam apenas primitivos de `src/components/ui/`; entre seções, a única importação é `Navbar` → `ThemeToggle`. Primitivos não importam seções.
 
 ## Restrições
 
