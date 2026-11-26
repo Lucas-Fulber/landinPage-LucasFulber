@@ -11,8 +11,8 @@ type Experience = {
 
 const experiences: Experience[] = [
   {
-    role: "Desenvolvedor Full Stack Jr.",
-    company: "Celeiro Crédito Agro",
+    role: "Desenvolvedor Full Stack · Freelancer",
+    company: "Celeiro Análise de Risco",
     period: "Mai/2026",
     current: true,
     bullets: [

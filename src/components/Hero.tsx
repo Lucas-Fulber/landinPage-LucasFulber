@@ -44,7 +44,7 @@ export default function Hero() {
           {...fadeUp(0.35)}
           className="text-xl sm:text-2xl font-medium text-accent"
         >
-          Desenvolvedor Full Stack Jr.
+          Desenvolvedor Full Stack
         </motion.p>
 
         {/* Tagline */}

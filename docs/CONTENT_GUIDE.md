@@ -31,8 +31,8 @@ Estes fatos aparecem em mais de um lugar e precisam concordar entre si:
 
 | Fato | Onde aparece |
 | --- | --- |
-| Cargo atual ("Desenvolvedor Full Stack Jr.") | `index.html` (title, og, twitter), `Hero.tsx`, `About.tsx`, `Experience.tsx` |
-| Empresa atual (Celeiro Crédito Agro, desde Mai/2026) | `About.tsx`, `Experience.tsx` |
+| Cargo atual ("Desenvolvedor Full Stack", freelancer) | `index.html` (title, og, twitter), `Hero.tsx`, `About.tsx`, `Experience.tsx` |
+| Empresa atual (Celeiro Análise de Risco, freelance, desde Mai/2026) | `About.tsx`, `Experience.tsx` |
 | Localização (Porto Alegre, RS) | `index.html`, `Hero.tsx`, `About.tsx`, `Contact.tsx` |
 | Formação em andamento (FAQI, One Bit Code) | `About.tsx`, `Education.tsx` |
 | Stack principal | `index.html` (description/keywords), `About.tsx`, `Skills.tsx` |
